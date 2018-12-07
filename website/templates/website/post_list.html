@@ -1,14 +1,29 @@
+{% load static %}
 <html>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-<script type="text/javascript" src="jquery.measurer.js"></script>
-<script type="text/javascript" src="jquery.gradienttext.js"></script>
-<script src="file_js.js"></script>
-{% for post in posts %}
+
+	<head>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="{% static 'css/website.css' %}">
+		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+		<script src="file_js.js"></script>
+	</head>
+
+<body>
     <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <h1><a href="/">Дрим тим робит лабы</a></h1>
     </div>
-{% endfor %}
+    <video autoplay controls="controls" loop>
+		<source src="static/video/boks.webm" type="video/mp4">
+	</video>
+
+<!-- 	{% for post in posts %}
+	    <div>
+	        <p>published: {{ post.published_date }}</p>
+	        <h1><a href="">{{ post.title }}</a></h1>
+	        <p>{{ post.text|linebreaksbr }}</p>
+	    </div>
+	{% endfor %} -->
+</body>
 <!--     <iframe width="800" height="600" src="https://2ch.hk/b/src/187738527/15441848368291.mp4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 </html>
