@@ -4,10 +4,25 @@ h1 a {
     font-family: 'Lobster';
 }
 body {
-    padding-left: 15px;
+	vertical-align: top;
+	float: top;
+
 }
 a {
 	color: #AAAAAA;
 	font-family: 'Lobster';
 	font-size: 30px;
+}
+.menu-header { 
+	height:5%;
+    background: #EEE;
+    padding-right: 99%; 
+    border: solid 1px black; 
+    float: left;
+    position: absolute; 
+}
+.menu-login {
+	float: right;
+	position: absolute;
+	left: 95%
 }

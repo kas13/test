@@ -6,31 +6,32 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
 		<link rel="stylesheet" href="{% static 'css/website.css' %}">
 		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-	</head>
 
-<body>
-    <div class="page-header">
-    	{% if user.is_authenticated %}
+        <div class="page-header">
+        {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu">add post<span class="glyphicon glyphicon-plus"></span></a>
         {% else %}
             <a href="{% url 'login' %}" class="top-menu">login<span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
         <h1><a href="/">Knowledge Testing System</a></h1>
-        <div class="menu-header">
-        	{% if user.is_authenticated %}
-
-        		<a href="{% url 'logout' %}" class="top-menu">logout</a>
-        	{% else %}
-        		<a href="{% url 'login' %}" class="top-menu">login</a>
-        	{% endif %}
-        </div>
 <!--         <h1><a href="/">Django Girls Blog</a></h1>
         {% if user.is_authenticated %}
-    		<a href="{% url 'post_new' %}" class="top-menu">add post<span class="glyphicon glyphicon-plus"></span></a>
-		{% endif %} -->
+            <a href="{% url 'post_new' %}" class="top-menu">add post<span class="glyphicon glyphicon-plus"></span></a>
+        {% endif %} -->
+        </div>
+        <div class="menu-header">
+            <div class="menu-login">
+            {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" class="top-menu">logout</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="top-menu">login</a>
+            {% endif %}
+        </div>
+        </div>
+	</head>
 
-    </div>
-    <div class="content container">
+<body>
+    <div class="content-container">
         <div class="row">
             <div class="col-md-8">
             {% block content %}
