@@ -6,7 +6,6 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> -->
 		<link rel="stylesheet" href="{% static 'css/website.css' %}">
 		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-
         <div class="page-header">
         {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu">add post<span class="glyphicon glyphicon-plus"></span></a>
@@ -31,6 +30,27 @@
 	</head>
 
 <body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li> <a href="/">predmeti</a>
+                    <ul>
+                        <li> <a href="/">matan</a></li>
+                        <li> <a href="/">fizika</a></li>
+                        <li> <a href="/">english</a></li>
+                        <li> <a href="/">history</a></li>
+                    </ul>
+                </li>
+                <li> <a href="/">statistika</a> </li>
+                <li> <a href="/">sozdat test</a> </li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" class="top-menu">logout</a> </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="top-menu">login</a> </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
     <div class="content-container">
         <div class="row">
             <div class="col-md-8">
