@@ -5,8 +5,8 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
-from .models import Post, UserCreation
-from .forms import PostForm, UserCreationForm
+from .models import Post, UserCreation, Subject
+from .forms import PostForm, UserCreationForm, SubjectCreationForm
 
 # Create your views here.
 def post_list(request):
@@ -63,7 +63,15 @@ def register(request):
 
 def new_test(request):
     if request.method == 'POST':
-        pass
+        form = SubjectCreationForm(request.POST)
+        if form.is_valid():
+            subject = form.save()
+            subject.save()
+            print("SAVE")
+            return redirect('/')
     else:
-        pass
-    return render (request,"website/new_test.html", {'form': form})
+        print("else")
+        form = SubjectCreationForm()
+    subjects = Subject.objects.all()
+    print(subjects[0].name)
+    return render (request,"website/new_test.html", {'subjects': subjects, 'form': form})

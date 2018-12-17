@@ -1,7 +1,6 @@
 from django.shortcuts import redirect
 from django import forms
-
-from .models import Post, UserCreation
+from .models import Post, UserCreation, Subject
 
 class PostForm(forms.ModelForm):
 
@@ -16,3 +15,13 @@ class UserCreationForm(forms.ModelForm):
         model = UserCreation
         fields = ('name', 'email', 'password',)
 
+
+class SubjectCreationForm(forms.ModelForm):
+
+    class Meta:
+        model = Subject
+        fields = ('name',)
+
+
+# class SubjectCreationForm(forms.Form):
+# 	subject = forms.CharField(max_length=20)

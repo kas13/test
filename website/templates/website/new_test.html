@@ -1,1 +1,16 @@
 {% extends 'website/base.html' %}
+
+{% block content %}
+
+ 	{% for subject in subjects %}
+        <div class="subject">
+            <p>{{ subject.name }}</p>
+        </div>
+  	{% endfor %}
+  <form action="" method="post">{% csrf_token %}
+
+    <label for="id_username">Test name:</label> {{ form.name }}
+
+    <input type="submit" value="Create" />
+  </form>
+{% endblock %}

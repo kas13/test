@@ -24,3 +24,9 @@ class UserCreation(models.Model):
     name = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
+
+
+class Subject(models.Model):
+    name = models.CharField(primary_key=True, max_length=200)
+    num_of_questuions = models.CharField(max_length=20)
+
