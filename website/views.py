@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.utils import timezone
-from .models import Post
-from .forms import PostForm
+#from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
+from django.shortcuts import render_to_response
+from django.contrib.auth.models import User
+from .models import Post, UserCreation
+from .forms import PostForm, UserCreationForm
 
 # Create your views here.
 def post_list(request):
@@ -39,3 +43,27 @@ def post_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'website/post_edit.html', {'form': form})
+
+
+def register(request):
+    form = UserCreationForm()
+
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+        user = User.objects.create_user(name, email, password)
+        user.save()
+        return redirect('/')
+    else:
+        print("else")
+        data, errors = {}, {}
+
+    return render (request,"registration/register.html", {'form': form})
+
+def new_test(request):
+    if request.method == 'POST':
+        pass
+    else:
+        pass
+    return render (request,"website/new_test.html", {'form': form})

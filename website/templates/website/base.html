@@ -42,7 +42,10 @@
                     </ul>
                 </li>
                 <li> <a href="/">statistika</a> </li>
-                <li> <a href="/">sozdat test</a> </li>
+                {% if user.is_staff %}
+                    <li> <a href="/">create test</a> </li>
+                    <li> <a href="/">add questions</a> </li>
+                {% endif %}
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}" class="top-menu">logout</a> </li>
                 {% else %}
