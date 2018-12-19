@@ -9,4 +9,6 @@ urlpatterns = [
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^register', views.register, name="register"),
     url(r'^new-test', views.new_test, name="new_test"),
+    url(r'^create-test/(?P<name>\w+)/$', views.create_test, name="create_test"),
+
 ]

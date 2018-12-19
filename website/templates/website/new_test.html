@@ -2,9 +2,9 @@
 
 {% block content %}
 
- 	{% for subject in subjects %}
+ 	{% for subject in subjects_list %}
         <div class="subject">
-            <p>{{ subject.name }}</p>
+        	<h1><a href="{% url 'create_test' name=subject.name %}">{{ subject.name }}</a></h1>
         </div>
   	{% endfor %}
   <form action="" method="post">{% csrf_token %}

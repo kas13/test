@@ -5,9 +5,12 @@ from django.utils import timezone
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
-from .models import Post, UserCreation, Subject
-from .forms import PostForm, UserCreationForm, SubjectCreationForm
+from .models import Post, UserCreation, SubjectList
+from .forms import PostForm, UserCreationForm, SubjectCreationForm, CreateQuestionForm
+from .DBhelper import *
 
+
+database_connection = DatabaseConnection()
 # Create your views here.
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -67,11 +70,28 @@ def new_test(request):
         if form.is_valid():
             subject = form.save()
             subject.save()
-            print("SAVE")
+            name_subject = request.POST['name']
+            print(name_subject)
+            database_connection.create_table_subject(name_subject)
+            print("SAVE", name_subject)
             return redirect('/')
     else:
         print("else")
         form = SubjectCreationForm()
-    subjects = Subject.objects.all()
-    print(subjects[0].name)
-    return render (request,"website/new_test.html", {'subjects': subjects, 'form': form})
+    subjects_list = SubjectList.objects.all()
+    return render (request,"website/new_test.html", {'subjects_list': subjects_list, 'form': form})
+
+
+def create_test(request, name):
+    table = database_connection.show_questions(name)
+    print(table)
+    if request.method == 'POST':
+        print(request.POST)
+        question = request.POST['question']
+        variants = request.POST['variants']
+        answer = request.POST['answer']
+        database_connection.save_question(name, question, variants, answer)
+    else:
+        pass
+    form = CreateQuestionForm()
+    return render (request,"website/create_test.html", {'form': form, 'table': table})

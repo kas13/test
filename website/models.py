@@ -26,7 +26,8 @@ class UserCreation(models.Model):
     email = models.CharField(max_length=200)
 
 
-class Subject(models.Model):
+class SubjectList(models.Model):
     name = models.CharField(primary_key=True, max_length=200)
     num_of_questuions = models.CharField(max_length=20)
+
 
