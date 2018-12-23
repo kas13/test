@@ -12,6 +12,10 @@ from .DBhelper import *
 
 database_connection = DatabaseConnection()
 # Create your views here.
+
+def base(request):
+    return render(request, 'website/base.html')
+
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 	return render(request, 'website/post_list.html', {'posts': posts})

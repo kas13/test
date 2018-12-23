@@ -46,6 +46,19 @@ h1 {
     /*align-items: center;*/
 
 /*}*/
+figure {
+	text-align: center;
+
+}
+figure img {
+	width: 725px;
+	height: 200px;
+}
+body {
+	background-image: url("kts/website/static/image/skulls_background.jpg");
+/*	background-color: #c7b39b;*/
+}
+
 .header {
     margin: 200px;
 }
