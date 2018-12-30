@@ -2,15 +2,18 @@
 
 {% block content %}
 
- 	{% for subject in subjects_list %}
-        <div class="subject">
-        	<h1><a href="{% url 'create_test' name=subject.name %}">{{ subject.name }}</a></h1>
-        </div>
-  	{% endfor %}
-  <form action="" method="post">{% csrf_token %}
+    <div class="create_test_subjects">
+    	<label>Already existing tests : </label>
+    	{% for subject in subjects_list %}
+    	<!-- <p><a href="{% url 'create_test' name=subject.name %}">{{ subject.name }}</a></p> -->
+    		<p>{{ subject.name }} </p>
+    	{% endfor %}
+    </div>
+  	
+	<form action="" method="post" class="create_test_form">{% csrf_token %}
 
-    <label for="id_username">Test name:</label> {{ form.name }}
+	    <label for="id_username">Test name:</label> {{ form.name }}
 
-    <input type="submit" value="Create" />
-  </form>
+	    <input type="submit" value="Create" />
+	</form>
 {% endblock %}

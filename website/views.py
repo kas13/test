@@ -14,7 +14,8 @@ database_connection = DatabaseConnection()
 # Create your views here.
 
 def base(request):
-    return render(request, 'website/base.html')
+    subjects_list = SubjectList.objects.all()
+    return render(request, 'website/base.html', {'subjects_list': subjects_list})
 
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -72,17 +73,20 @@ def new_test(request):
     if request.method == 'POST':
         form = SubjectCreationForm(request.POST)
         if form.is_valid():
-            subject = form.save()
-            subject.save()
             name_subject = request.POST['name']
-            print(name_subject)
-            database_connection.create_table_subject(name_subject)
-            print("SAVE", name_subject)
+            result = database_connection.create_table_subject(name_subject)
+            if result is True:
+                subject = form.save()
+                subject.save()
+                print("SAVE", name_subject)
             return redirect('/')
     else:
         print("else")
         form = SubjectCreationForm()
     subjects_list = SubjectList.objects.all()
+    #     subjects_list = []
+    # for subject in SubjectList.objects.all():
+    #     subjects_list.append(subject.name)
     return render (request,"website/new_test.html", {'subjects_list': subjects_list, 'form': form})
 
 
@@ -99,3 +103,48 @@ def create_test(request, name):
         pass
     form = CreateQuestionForm()
     return render (request,"website/create_test.html", {'form': form, 'table': table})
+
+
+def new_questions(request, name):
+    table = database_connection.show_questions(name)
+    print(table)
+    if request.method == 'POST':
+        print(request.POST)
+        question = request.POST['question']
+        variants = request.POST['variants']
+        answer = request.POST['answer']
+        database_connection.save_question(name, question, variants, answer)
+    else:
+        pass
+    form = CreateQuestionForm()
+    return render (request,"website/new_questions.html", {'form': form, 'table': table})
+
+
+
+def add_questions(request):
+    subjects_list = SubjectList.objects.all()
+    return render (request,"website/add_questions.html", {'subjects_list': subjects_list})
+
+    # table = database_connection.show_questions(name)
+    # print(table)
+    # if request.method == 'POST':
+    #     print(request.POST)
+    #     question = request.POST['question']
+    #     variants = request.POST['variants']
+    #     answer = request.POST['answer']
+    #     database_connection.save_question(name, question, variants, answer)
+    # else:
+    #     pass
+    # form = CreateQuestionForm()
+    # return render (request,"website/create_test.html", {'form': form, 'table': table})
+
+def start_test(request, name, pk):
+    tests = database_connection.get_tests(name)
+    num_of_question = int(pk)
+    question = tests[num_of_question][1]
+    variants = tests[num_of_question][2]
+    answer = tests[num_of_question][3]
+    print(variants)
+
+    return render (request,"website/start_test.html", {'num_of_question': num_of_question + 1, 'question': question,
+                                                       'variants': variants, 'answer': answer})

@@ -1,0 +1,23 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+<div class="start_test_container">
+
+		<div class="start_test_question">
+			<label>Question № {{num_of_question}}</label>
+			<p>{{question}}</p>
+		</div>
+		<div class="start_test_variants">
+			<label>Variants: </label>
+			<p>{{variants}}</p>
+		</div>
+		<div class="start_test_answer">
+			<label>Answer : </label>
+			<input type="text" name="">
+			<input type="submit" name="answer_button" value="REPLY">
+		</div>
+
+</div>
+
+
+{% endblock %}

@@ -11,5 +11,7 @@ urlpatterns = [
     url(r'^register', views.register, name="register"),
     url(r'^new-test', views.new_test, name="new_test"),
     url(r'^create-test/(?P<name>\w+)/$', views.create_test, name="create_test"),
-
+    url(r'^add_questions', views.add_questions, name="add_questions"),
+    url(r'^new-question/(?P<name>\w+)/$', views.new_questions, name="new_questions"),
+    url(r'^start-test/(?P<name>\w+)/(?P<pk>\d+)/$', views.start_test, name="start_test"),
 ]

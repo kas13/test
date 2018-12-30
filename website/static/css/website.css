@@ -2,13 +2,20 @@
     color: #FCA205;
     font-size: 30px;
     font-family: 'Lobster';
-}
-body {
-	vertical-align: top;
-	float: top;
+}*/
+/*body {
+background: #e4f5fc; 
+background: -moz-linear-gradient(top, #e4f5fc 22%, #e4f5fc 26%, #bfe8f9 53%, #2ab0ed 100%); 
+background: -webkit-linear-gradient(top, #e4f5fc 22%,#e4f5fc 26%,#bfe8f9 53%,#2ab0ed 100%); 
+background: linear-gradient(to bottom, #e4f5fc 22%,#e4f5fc 26%,#bfe8f9 53%,#2ab0ed 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f5fc', endColorstr='#2ab0ed',GradientType=0 );
+background-repeat:no-repeat;
+background-size: 100%; 
+-webkit-background-size: 100%;
+-moz-background-size: 100%;
 
-}
-a {
+}*/
+/*a {
 	color: #AAAAAA;
 	font-family: 'Lobster';
 	font-size: 30px;
@@ -25,8 +32,8 @@ a {
 	float: right;
 	position: absolute;
 	left: 95%
-}
-*/
+}*/
+
 h1 {
     color: #336;
     font-size: 300%;
@@ -46,6 +53,12 @@ h1 {
     /*align-items: center;*/
 
 /*}*/
+p {
+	color: black;
+}
+label {
+	color: black;
+}
 figure {
 	text-align: center;
 
@@ -54,10 +67,7 @@ figure img {
 	width: 725px;
 	height: 200px;
 }
-body {
-	background-image: url("kts/website/static/image/skulls_background.jpg");
-/*	background-color: #c7b39b;*/
-}
+
 
 .header {
     margin: 200px;
@@ -77,10 +87,12 @@ body {
 .menu > ul li a {
     display: block;
     background: rgb(255,255,255); /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(255,255,255,1) 5%, rgba(255,255,255,1) 5%, rgba(255,255,255,1) 13%, rgba(243,243,243,1) 57%, rgba(237,237,237,1) 86%, rgba(255,255,255,1) 97%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 5%,rgba(255,255,255,1) 5%,rgba(255,255,255,1) 13%,rgba(243,243,243,1) 57%,rgba(237,237,237,1) 86%,rgba(255,255,255,1) 97%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 5%,rgba(255,255,255,1) 5%,rgba(255,255,255,1) 13%,rgba(243,243,243,1) 57%,rgba(237,237,237,1) 86%,rgba(255,255,255,1) 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    background: #c5deea; /* Old browsers */
+background: #f7fbfc; /* Old browsers */
+background: -moz-linear-gradient(top, #f7fbfc 0%, #d9edf2 40%, #add9e4 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #f7fbfc 0%,#d9edf2 40%,#add9e4 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #f7fbfc 0%,#d9edf2 40%,#add9e4 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7fbfc', endColorstr='#add9e4',GradientType=0 );
     color: #454547;
     padding: 15px 30px 15px 40px;
     text-decoration: none;
@@ -119,4 +131,124 @@ body {
 }
 .menu li:hover > ul {
     display: block;
+}
+.create_test_subjects {
+	/*border: solid 1px red;*/
+	float: left;
+	margin: 0;
+}
+.create_test_subjects p {
+	color: #003366;
+    font-size: 30;
+
+}
+.create_test_subjects label {
+	color: black;
+    font-family: 'Lobster';
+    font-size: 30;
+}
+.create_test_form label {
+	color: black;
+    font-size: 30;
+    font-family: 'Lobster';
+
+}
+.create_test_form {
+	display: flex;
+	float: left;
+	padding-left: 100;
+}
+.add_questions_div a {
+	color: #003366;
+    font-size: 30;
+}
+.add_questions_div label {
+    font-family: 'Lobster';
+    font-size: 30;
+}
+.new_questions_form {
+	margin: 0;
+    padding: 0;
+
+}
+/*.new_questions_question {
+	border: solid 1px green;
+	float: left;
+	margin-left: 30%;
+	max-width: 300px;
+	max-height: 200px;
+}
+.new_questions_variants {
+	border: solid 1px red;
+	margin: auto;
+	float: right;
+	max-width: 300px;
+	max-height: 200px;
+}
+.new_questions_answer {
+	border: solid 1px blue;
+	margin: auto;
+	float: right;
+
+}*/
+.new_questions_div > ul {
+	display: flex;
+	justify-content: center;
+}
+.new_questions_div  li {
+	width: 300px
+	height: 200px;
+	margin-right: 30px;
+}
+.new_questions_form > input {
+	margin-left:  50%;
+}
+
+.content-container {
+    width: 910px;
+    height: 670px;
+    display: block;  
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+
+
+.start_test_container {
+    border: solid 4px red;
+    width: 100%;
+    height: 100%;
+}
+.start_test_container label {
+    border: solid 4px black;
+    width: 130;
+    float: left;
+
+}
+.start_test_container p {
+    border: solid 4px black;
+
+}
+
+.start_test_question {
+    border: solid 4px black;
+    width: 100%;
+    display: flex;
+
+}
+
+
+.start_test_variants {
+    border: solid 4px black;
+    width: 100%;
+    height: 150;
+    display: flex;
+}
+
+.start_test_answer {
+    border: solid 4px black;
+    width: 100%;
+    height: 50;
+    display: flex;
 }

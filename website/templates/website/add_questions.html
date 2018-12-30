@@ -1,0 +1,18 @@
+{% extends 'website/base.html' %}
+
+
+{% block content %}
+    <div class="add_questions_div">
+    	<label> Choose test : </label>
+    	{% for subject in subjects_list %}
+    		<a href="{% url 'new_questions' name=subject.name %}">{{ subject.name }}</a>
+    	{% endfor %}
+    </div>
+<!--     <form action="" method="post" class="question-form">{% csrf_token %}
+    	<label for="question">question:</label> {{ form.question }}
+    	<label for="question">variants:</label> {{ form.variants }}
+    	<label for="question">answer:</label> {{ form.answer }}
+
+    	<input type="submit" value="Create" />
+	</form> -->
+{% endblock %}

@@ -4,7 +4,7 @@ from psycopg2.extensions import AsIs
 class DatabaseConnection:
     def __init__(self):
         self.connecion = psycopg2.connect(
-            database='ktsdb', user='user144', host='localhost', password='user')
+            database='ktsdb2', user='user144', host='localhost', password='user')
         self.connecion.autocommit = True
         self.cursor = self.connecion.cursor()
 
@@ -18,19 +18,21 @@ class DatabaseConnection:
 
     def create_table_subject(self, subject):
         try:
-            query = "CREATE TABLE {}(id serial PRIMARY KEY, question text, variants text, answer text )".format(subject)
+            query = "CREATE TABLE {}(id serial PRIMARY KEY, question VARCHAR(300), variants VARCHAR(300), answer VARCHAR(50) )".format(subject)
             self.cursor.execute(query)
+            print(subject, " table is created")
             return True
         except:
             return False
 
-    def show_questions(self, subject):
+    def get_tests(self, subject):
         query = "SELECT * FROM {}".format(subject)
         self.cursor.execute(query)
         table = self.cursor.fetchall()
         return table
 
     def save_question(self, subj, que, var, ans):
+        print(subj, que, var, ans)
         #query = "INSERT INTO {} (question, variants, answer) VALUES ({}, {}, {})".format(subj, que, var, ans)
         self.cursor.execute("INSERT INTO %s (question, variants, answer) VALUES (%s, %s, %s)", (AsIs(subj), que, var, ans))
 

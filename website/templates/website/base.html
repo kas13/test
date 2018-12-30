@@ -27,26 +27,25 @@
             </div>
         </div> -->
 	</head>
+<body style="background: url(/static/image/60303720.jpg);">
 
-<body style="background: url(/static/image/skulls_background.jpg);">
     <figure>
-        <img src="/static/image/test_knowledge2.png" align="middle">
+        <img src="/static/image/test_knowledge2.png">
     </figure>
     <header>
         <nav class="menu">
             <ul>
-                <li> <a href="/">predmeti</a>
+                <li> <a href="/">Subject</a>
                     <ul>
-                        <li> <a href="/">matan</a></li>
-                        <li> <a href="/">fizika</a></li>
-                        <li> <a href="/">english</a></li>
-                        <li> <a href="/">history</a></li>
+                        {% for subject in subjects_list %}
+                            <li> <a href="{% url 'start_test' name=subject.name pk=0 %}">{{subject.name}}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
-                <li> <a href="/">statistika</a> </li>
+                <li> <a href="/">Statistics</a> </li>
                 {% if user.is_staff %}
                     <li> <a href="{% url 'new_test' %}">create test</a> </li>
-                    <li> <a href="/">add questions</a> </li>
+                    <li> <a href="{% url 'add_questions' %}">add questions</a> </li>
                 {% endif %}
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}" class="top-menu">logout</a> </li>

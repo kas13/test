@@ -1,0 +1,42 @@
+{% extends 'website/base.html' %}
+
+
+{% block content %}
+    <form action="" method="post" class="new_questions_form">{% csrf_token %}
+    	<div class="new_questions_div">
+	    	<ul>
+	    		<li>
+	    			<label for="question">question:</label> 
+	    			<p></p>
+	    			{{ form.question }}
+	    		</li>
+	    		<li>
+	    			<label for="question">variants:</label>
+	    			<p></p>
+	    			{{ form.variants }}
+	    		</li>
+	    		<li>
+	    			<label for="question">answer:</label>
+	    			<p></p>
+	    			{{ form.answer }}
+	    		</li>
+	    	</ul>
+    	</div>
+    	<input type="submit" value="Create" />
+<!--     	<div class="new_questions_question">
+    	    <label for="question">question:</label> 
+    	    <p></p>
+    	    {{ form.question }}
+    	<div class="new_questions_variants">
+    	    <label for="question">variants:</label> 
+    	    <p></p>
+    	    {{ form.variants }}
+    	<div class="new_questions_answer">
+    	    <label for="question">answer:</label> 
+    	    <p></p>
+    	    {{ form.answer }}  	 
+
+    	<input type="submit" value="Create" />
+    	</div> -->
+	</form>
+{% endblock %}
